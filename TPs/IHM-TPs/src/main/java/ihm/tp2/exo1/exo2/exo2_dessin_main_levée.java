@@ -4,6 +4,8 @@
  */
 package ihm.tp2.exo1.exo2;
 
+import java.awt.Color;
+
 /**
  *
  * @author logan
@@ -28,33 +30,79 @@ public class exo2_dessin_main_levée extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel_options = new javax.swing.JPanel();
+        buttonGroupColor = new javax.swing.ButtonGroup();
+        buttonGroupThickness = new javax.swing.ButtonGroup();
+        jPanelOptions = new javax.swing.JPanel();
         jToggleButtonBlue = new javax.swing.JToggleButton();
         jToggleButtonRed = new javax.swing.JToggleButton();
         jToggleButtonGreen = new javax.swing.JToggleButton();
         jSeparator = new javax.swing.JSeparator();
         jToggleButtonTraitFin = new javax.swing.JToggleButton();
         jToggleButtonTraitEpais = new javax.swing.JToggleButton();
+        jPanelDessin = new javax.swing.JPanel();
+        canva = new ihm.tp2.exo1.exo2.Canva();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel_options.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Options"));
+        jPanelOptions.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Options"));
 
         jToggleButtonBlue.setBackground(new java.awt.Color(0, 0, 204));
-        jPanel_options.add(jToggleButtonBlue);
+        buttonGroupColor.add(jToggleButtonBlue);
+        jToggleButtonBlue.addActionListener(this::jToggleButtonBlueActionPerformed);
+        jPanelOptions.add(jToggleButtonBlue);
 
         jToggleButtonRed.setBackground(new java.awt.Color(204, 0, 0));
-        jPanel_options.add(jToggleButtonRed);
+        buttonGroupColor.add(jToggleButtonRed);
+        jToggleButtonRed.addActionListener(this::jToggleButtonRedActionPerformed);
+        jPanelOptions.add(jToggleButtonRed);
 
         jToggleButtonGreen.setBackground(new java.awt.Color(0, 204, 0));
-        jPanel_options.add(jToggleButtonGreen);
-        jPanel_options.add(jSeparator);
+        buttonGroupColor.add(jToggleButtonGreen);
+        jToggleButtonGreen.addActionListener(this::jToggleButtonGreenActionPerformed);
+        jPanelOptions.add(jToggleButtonGreen);
 
+        jSeparator.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jSeparator.setPreferredSize(new java.awt.Dimension(10, 0));
+        jPanelOptions.add(jSeparator);
+
+        buttonGroupThickness.add(jToggleButtonTraitFin);
         jToggleButtonTraitFin.setText("Trait fin");
-        jPanel_options.add(jToggleButtonTraitFin);
+        jToggleButtonTraitFin.addActionListener(this::jToggleButtonTraitFinActionPerformed);
+        jPanelOptions.add(jToggleButtonTraitFin);
 
+        buttonGroupThickness.add(jToggleButtonTraitEpais);
         jToggleButtonTraitEpais.setText("Trait épais");
-        jPanel_options.add(jToggleButtonTraitEpais);
+        jToggleButtonTraitEpais.addActionListener(this::jToggleButtonTraitEpaisActionPerformed);
+        jPanelOptions.add(jToggleButtonTraitEpais);
+
+        jPanelDessin.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Dessin"));
+
+        javax.swing.GroupLayout canvaLayout = new javax.swing.GroupLayout(canva);
+        canva.setLayout(canvaLayout);
+        canvaLayout.setHorizontalGroup(
+            canvaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        canvaLayout.setVerticalGroup(
+            canvaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 214, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanelDessinLayout = new javax.swing.GroupLayout(jPanelDessin);
+        jPanelDessin.setLayout(jPanelDessinLayout);
+        jPanelDessinLayout.setHorizontalGroup(
+            jPanelDessinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDessinLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(canva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanelDessinLayout.setVerticalGroup(
+            jPanelDessinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelDessinLayout.createSequentialGroup()
+                .addComponent(canva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,19 +110,53 @@ public class exo2_dessin_main_levée extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel_options, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelDessin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelOptions, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel_options, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(232, Short.MAX_VALUE))
+                .addComponent(jPanelOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelDessin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jToggleButtonTraitFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonTraitFinActionPerformed
+        // On définit l'éppaisseur du trait à 4px
+        canva.setCurrentThickness(4);
+        
+    }//GEN-LAST:event_jToggleButtonTraitFinActionPerformed
+
+    private void jToggleButtonTraitEpaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonTraitEpaisActionPerformed
+        // On définit l'épaisseur du trait à 8px
+        canva.setCurrentThickness(8);
+
+    }//GEN-LAST:event_jToggleButtonTraitEpaisActionPerformed
+
+    private void jToggleButtonBlueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonBlueActionPerformed
+        // On définit la couleur des points à bleu
+        canva.setCurrentColor(Color.BLUE);
+
+    }//GEN-LAST:event_jToggleButtonBlueActionPerformed
+
+    private void jToggleButtonRedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonRedActionPerformed
+        // On définit la couleur des points à rouge
+        canva.setCurrentColor(Color.RED);
+
+    }//GEN-LAST:event_jToggleButtonRedActionPerformed
+
+    private void jToggleButtonGreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonGreenActionPerformed
+        // On définit la couleur des points à vert
+        canva.setCurrentColor(Color.GREEN);
+
+    }//GEN-LAST:event_jToggleButtonGreenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -100,9 +182,14 @@ public class exo2_dessin_main_levée extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new exo2_dessin_main_levée().setVisible(true));
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel_options;
+    private javax.swing.ButtonGroup buttonGroupColor;
+    private javax.swing.ButtonGroup buttonGroupThickness;
+    private ihm.tp2.exo1.exo2.Canva canva;
+    private javax.swing.JPanel jPanelDessin;
+    private javax.swing.JPanel jPanelOptions;
     private javax.swing.JSeparator jSeparator;
     private javax.swing.JToggleButton jToggleButtonBlue;
     private javax.swing.JToggleButton jToggleButtonGreen;
