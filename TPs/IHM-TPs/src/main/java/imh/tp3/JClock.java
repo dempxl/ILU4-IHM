@@ -17,12 +17,12 @@ import java.time.LocalDateTime;
  *
  * @author logan
  */
-public class Horloge extends javax.swing.JPanel {
+public class JClock extends javax.swing.JPanel {
 
     /**
-     * Creates new form Horloge
+     * Creates new form JClock
      */
-    public Horloge() {
+    public JClock() {
         initComponents();
         
         // On initialise les timers
@@ -31,10 +31,9 @@ public class Horloge extends javax.swing.JPanel {
             this.repaint();
         });
         timer.start();
-        
     }
     
-    @Override
+     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         
@@ -97,6 +96,28 @@ public class Horloge extends javax.swing.JPanel {
         g2d.setStroke(new BasicStroke(4));
         g2d.drawLine(centerX, centerY, hourPoint.x, hourPoint.y);
     } 
+    
+    //retourne le degré de rotation d'une seconde sur l'horloge
+    private int getSecondsRotation(int seconds) {
+        return (360/60) * seconds;
+    }
+    //retourn le degré de rotation d'une minute sur l'horloge
+    private int getMinuteRotation(int minutes) {
+        return (360/60) * minutes;
+    }
+    //retourne le degré de rotation d'une heure sur l'horloge
+    private int getHourRotation(int hours) {
+        return (360/12) * hours;
+    }
+    // retourne un point qui a été tourné autour du centre selon le degré
+    private Point rotatePoint(Point point, Point center, int degree) {
+        AffineTransform rotation = new AffineTransform();
+        double angleInRadians = (degree * Math.PI / 180);
+        rotation.rotate(angleInRadians, center.getX(), center.getY());
+        Point result = new Point();
+        rotation.transform(point, result);
+        return result;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -119,33 +140,8 @@ public class Horloge extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    //retourne le degré de rotation d'une seconde sur l'horloge
-    private int getSecondsRotation(int seconds) {
-        return (360/60) * seconds;
-    }
-    //retourn le degré de rotation d'une minute sur l'horloge
-    private int getMinuteRotation(int minutes) {
-        return (360/60) * minutes;
-    }
-    //retourne le degré de rotation d'une heure sur l'horloge
-    private int getHourRotation(int hours) {
-        return (360/12) * hours;
-    }
-    // retourne un point qui a été tourné autour du centre selon le degré
-    private Point rotatePoint(Point point, Point center, int degree) {
-        AffineTransform rotation = new AffineTransform();
-        double angleInRadians = (degree * Math.PI / 180);
-        rotation.rotate(angleInRadians, center.getX(), center.getY());
-        Point result = new Point();
-        rotation.transform(point, result);
-        return result;
-    }
-    
-
-        // On définit l'heure à lire (heure actuelle)
-        LocalDateTime time = LocalDateTime.now();
-
-    
+    // On définit l'heure à lire (heure actuelle)
+    LocalDateTime time = LocalDateTime.now();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }
